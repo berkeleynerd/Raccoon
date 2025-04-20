@@ -14,6 +14,11 @@ plugins {
     alias(libs.plugins.kotlinx.kover).apply(false)
 }
 
+// Configure jansi version for all JavaExec tasks
+tasks.withType<JavaExec>().configureEach {
+    systemProperty("jansi.version", "2.4.0")
+}
+
 tasks.register("clean", Delete::class) {
     delete(rootProject.layout.buildDirectory)
 }
